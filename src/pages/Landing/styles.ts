@@ -10,6 +10,17 @@ export const PageLanding = styled.div`
 
   color: var(--color-text-in-primary);
   background: var(--color-primary);
+
+  @media (min-width: 1100px) {
+    #page-landing-content {
+      max-width: 1100px;
+
+      display: grid;
+      grid-template-rows: 350px 1fr;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-areas: 'logo hero hero' 'buttons buttons total';
+    }
+  }
 `;
 
 export const LogoContainer = styled.div`
@@ -26,10 +37,31 @@ export const LogoContainer = styled.div`
     line-height: 4.6rem;
     margin-top: 0.8rem;
   }
+
+  @media (min-width: 1100px) {
+    grid-area: logo;
+    align-self: center;
+    text-align: left;
+    margin: 0;
+
+    h2 {
+      text-align: left;
+      font-size: 2.8rem;
+    }
+
+    img {
+      height: 100%;
+    }
+  }
 `;
 
 export const HeroImage = styled.img`
   width: 100%;
+
+  @media (min-width: 1100px) {
+    grid-area: hero;
+    justify-self: end;
+  }
 `;
 
 export const ButtonsContainer = styled.div`
@@ -54,6 +86,7 @@ export const ButtonsContainer = styled.div`
 
     img {
       width: 4rem;
+      margin-right: 2.4rem;
     }
   }
 
@@ -76,6 +109,15 @@ export const ButtonsContainer = styled.div`
   a.give-classes:hover {
     background: var(--color-secundary-dark);
   }
+
+  @media (min-width: 1100px) {
+    grid-area: buttons;
+    justify-content: flex-start;
+
+    a {
+      font-size: 2.4rem;
+    }
+  }
 `;
 
 export const TotalConnections = styled.span`
@@ -87,5 +129,10 @@ export const TotalConnections = styled.span`
 
   img {
     margin-left: 0.8rem;
+  }
+
+  @media (min-width: 1100px) {
+    grid-area: total;
+    justify-self: end;
   }
 `;
