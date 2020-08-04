@@ -4,6 +4,10 @@ export const PageTeacherList = styled.div`
   #page-teacher-list-content {
     width: 100vw;
     height: 100vh;
+
+    @media (min-width: 700px) {
+      max-width: 100%;
+    }
   }
 `;
 
@@ -43,5 +47,17 @@ export const SearchTeachers = styled.form`
     left: 1.6rem;
     right: 1.6rem;
     bottom: 0;
+  }
+
+  @media (min-width: 700px) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 16px;
+    position: absolute;
+    bottom: -28px;
+
+    div {
+      margin-top: 1.4rem;
+    }
   }
 `;
