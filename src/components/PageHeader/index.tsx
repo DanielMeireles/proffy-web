@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -8,21 +10,22 @@ import { Header, TopBarContainer, HeaderContent } from './styles';
 
 interface PageHeaderProps {
   title: string;
+  description?: string;
 }
 
-// eslint-disable-next-line react/prop-types
-const PageHeader: React.FC<PageHeaderProps> = ({ title, children }) => {
+const PageHeader: React.FC<PageHeaderProps> = (props) => {
   return (
-    <Header>
+    <Header className="page-header">
       <TopBarContainer>
         <Link to="/">
           <img src={backIcon} alt="Voltar" />
         </Link>
         <img src={logoIcon} id="Proffy" alt="Proffy" />
       </TopBarContainer>
-      <HeaderContent>
-        <strong>{title}</strong>
-        {children}
+      <HeaderContent className="header-content">
+        <strong>{props.title}</strong>
+        {props.description && <p>{props.description}</p>}
+        {props.children}
       </HeaderContent>
     </Header>
   );
