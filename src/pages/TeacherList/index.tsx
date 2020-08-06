@@ -10,7 +10,8 @@ import Input from '../../components/Input';
 import Select from '../../components/Select';
 
 interface Teacher {
-  id: string;
+  class_id: string;
+  user_id: string;
   name: string;
   subject: string;
   bio: string;
@@ -94,7 +95,7 @@ function TeacherList() {
         </PageHeader>
         <Main>
           {teachers.map((teacher: Teacher) => {
-            return <TeacherItem key={teacher.id} teacher={teacher} />;
+            return <TeacherItem key={teacher.class_id} teacher={teacher} />;
           })}
         </Main>
       </div>

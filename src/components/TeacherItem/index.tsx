@@ -4,10 +4,12 @@ import React from 'react';
 import { Item, Header, Footer } from './styles';
 
 import whatsappIcon from '../../assets/images/icons/whatsapp.svg';
+import api from '../../services/api';
 
 interface TeacherItemProps {
   teacher: {
-    id: string;
+    class_id: string;
+    user_id: string;
     name: string;
     subject: string;
     bio: string;
@@ -18,6 +20,12 @@ interface TeacherItemProps {
 }
 
 const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
+  function createNewConnection() {
+    api.post('connections', {
+      user_id: teacher.user_id,
+    });
+  }
+
   return (
     <Item>
       <Header>
@@ -33,10 +41,15 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
           Preço/hora
           <strong>{`R$ ${teacher.cost}`}</strong>
         </p>
-        <button type="button">
+        <a
+          // eslint-disable-next-line react/jsx-no-target-blank
+          target="_blank"
+          href={`https://wa.me/${teacher.whatsapp}`}
+          onClick={createNewConnection}
+        >
           <img src={whatsappIcon} alt="Whatsapp" />
           Entrar em contato
-        </button>
+        </a>
       </Footer>
     </Item>
   );
